@@ -6,12 +6,27 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Soundmap</title>
+
+  <script src="script/leaflet.js"></script>
   <link rel="stylesheet" href="script/leaflet.css">
+
 </head>
 
 <body>
+  <!-- creating a div for loading a basemap, square format -->
+  <div id="mapfield" style="width: 100%; height: 100vh;"></div>
 
-  <script src="script/leaflet.js"></script>
+  <script>
+    // loading OSM service, start screen located at Ipanema beach, zoom range, no continuous wrapping, OSM credits
+    var map = L.map('mapfield').setView([-22.98107357040434, -43.202619552612305], 14)
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+      {
+        minZoom: 11,
+        maxZoom: 17,
+        noWrap: true,
+        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</> contributors '
+      }).addTo(map)
+  </script>
 </body>
 
 </html>
